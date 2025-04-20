@@ -1,4 +1,10 @@
 import { useState } from 'react'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import MemoryChart from './components/MemoryChart';
+import ModalPage from './components/ModalPage';
+import Confetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 
 let timerId;
 let firstTime = false;
@@ -13,6 +19,8 @@ function App() {
   const [gameOver, setGameOver] = useState(false); // oyunun bitme durumunu kontrol eden state
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal kontrolü için state
   const [cards, setCards] = useState(() => shuffleCards(datas));
+
+  const { width, height } = useWindowSize();
 
   // sayıların karıştırılması için oluşturuklan fonksiyon
   function shuffleCards(datas) {
@@ -123,6 +131,9 @@ function App() {
   return (
     <>
       <div className="container">
+        {gameOver && (
+          <Confetti width={width} height={height} />
+        )}
         <Header onOpenModal={handleOpenModal}
           onRestartClick={handleRestart} />
         <MemoryChart
@@ -143,79 +154,6 @@ function App() {
       </div>
     </>
   );
-}
-
-// sayıların oluştuğu ve seçilme eşleşme durumlarının kontrol edildiği component
-function MemoryChart({ cards, matchedCards, selectedCards, onHandleClick }) {
-  return (
-    <div className="game">
-      {cards.map(x => {
-        // bir kartın şu anda eşleşmiş ya da seçilmiş olup olmadığını includes ile arıyoruz
-        const isSelected = selectedCards.includes(x.id);
-        const isMatched = matchedCards.includes(x.id);
-
-        return (
-          <button
-            key={x.id}
-            className={`game-item ${isMatched ? "game-item-same" : isSelected ? "game-item-active" : ""}`}
-            onClick={isMatched ? null : () => onHandleClick(x.id)}>
-            {x.value}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-// header componenti
-function Header({ onOpenModal, onRestartClick }) {
-  return (
-    <div className="header">
-      <h2>memory</h2>
-      <button className='menuBtn' onClick={onOpenModal}>Menu</button>
-      <div className="btn-area">
-        <button onClick={onRestartClick} className='restartBtn'>Restart</button>
-        <button onClick={onRestartClick} className='newGame'>New Game</button>
-      </div>
-    </div>
-  );
-}
-
-// modal page componenti
-function ModalPage({ onCloseModal, onRestartClick }) {
-
-  return (
-    <>
-      <div className="modal-overlay">
-        <div className="modal-content">
-          <button onClick={onRestartClick} className='modal-restart'>Restart</button>
-          <button onClick={onRestartClick} className='modal-new-game'>New Game</button>
-          <button onClick={onCloseModal} className='modal-resume-game'>Resume Game</button>
-        </div>
-      </div>
-    </>
-  )
-}
-
-// footer componenti
-function Footer({ time, moves, gameOver }) {
-  return (
-    <>
-      <div className="footer">
-        <h1>{gameOver && "Game Over"}</h1>
-        <div className="footer-content">
-          <div className="time">
-            <h2>Time</h2>
-            <span>{time}</span>
-          </div>
-          <div className="moves">
-            <h2>Moves</h2>
-            <span>{moves}</span>
-          </div>
-        </div>
-      </div>
-    </>
-  )
 }
 
 export default App;
