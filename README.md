@@ -1,91 +1,104 @@
 # 🧩 Memory Game - React
 
-> Kart eşleştirme üzerine kurulu, zaman ve hamle takibi yapabilen, confetti animasyonuyla başarıyı kutlayan modern bir React oyunu!
+> A modern React-based card matching game featuring time & move tracking, a confetti celebration, and smooth responsive design!
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5)
 
-## 🔍 Proje Genel Bakış
+## 🔍 Project Overview
 
-**Memory Game** projesi, kullanıcıların hafızalarını kullanarak aynı değere sahip kart çiftlerini eşleştirmelerini sağlayan eğlenceli bir oyundur.  
-Bu React tabanlı versiyon ile oyun daha modüler, performanslı ve kullanıcı dostu hale getirilmiştir.
+The **Memory Game** project is a fun and interactive card-matching game where users must find and match identical card pairs.  
+This version is built with React to offer a more modular, performant, and user-friendly experience.
 
-![image](https://github.com/user-attachments/assets/131e948d-2da0-470c-9a32-d6c3265bbfb0)
+![image](https://github.com/user-attachments/assets/cf55d9be-2bab-4a33-931f-e8a82f8dc24e)
 
-## 🚀 Temel Özellikler
+## 🚀 Core Features
 
-### 🔄 Kartların Karıştırılması & Dinamik Render
-- Oyun başladığında tüm kartlar `shuffle()` fonksiyonu ile karıştırılır.
-- Kartlar iki kez eklenerek eşleştirme yapılabilecek hale getirilir.
-- Her yeni oyunda farklı kart dizilimi oluşur.
+### 🔄 Card Shuffling & Dynamic Rendering
+- At the start of the game, all cards are shuffled using a `shuffle()` function.
+- Each card is duplicated to create pairs.
+- A new randomized card layout is generated with every new game.
 
-### 🧠 Seçim ve Eşleşme Kontrolü
-- Oyuncunun seçtiği kartlar `selectedCards` state'inde tutulur.
-- Eşleşen kartlar `matchedCards` dizisine eklenir.
-- Her iki kart seçildiğinde eşleşme kontrolü yapılır ve görsel olarak kartlar açılır/kapanır.
+![image](https://github.com/user-attachments/assets/afa2fba1-1f07-407a-ae64-4de2a744e91d)
 
-![image](https://github.com/user-attachments/assets/4e6f84cb-5a9a-4d40-9a02-daa1b6897a5f)
+### 🧠 Selection & Match Checking
+- Selected cards are stored in the `selectedCards` state.
+- Matched pairs are stored in `matchedCards`.
+- When two cards are selected, a match check is triggered and cards visually flip open or closed accordingly.
 
-### ⏱️ Zaman & Hamle Takibi
-- Oyun başladığında otomatik olarak **zamanlayıcı (timer)** çalışır.
-- Geçen süre formatlanarak (MM:SS) ekranda gösterilir.
-- Her iki kart seçimi bir hamle olarak sayılır ve **hamle sayısı (moves)** artırılır.
+![image](https://github.com/user-attachments/assets/fbc0ebde-a0d8-414e-8528-3a3939955733)
 
-![image](https://github.com/user-attachments/assets/50f396f7-2e95-45d6-92c5-e73efc6e46d5)
+### ⏱️ Time & Move Tracking
+- A **timer** starts automatically when the game begins.
+- Elapsed time is formatted as (MM:SS) and shown to the player.
+- Every two card selections count as one **move**, which is also tracked in real-time.
 
-### 🧩 Oyun Bitişi ve Modal Yönetimi
-- Tüm kartlar eşleştirildiğinde oyun otomatik olarak sona erer ve “Game Over” mesajı gösterilir.
-- Kullanıcıya modal üzerinden 3 seçenek sunulur:
-  - **Restart:** Oyunu sıfırlar.
-  - **New Game:** Yeni kart dizilimi ile oyun başlatır.
-  - **Resume Game:** Mevcut oyuna kaldığı yerden devam eder.
+![image](https://github.com/user-attachments/assets/358802f4-7adf-47a6-8785-25f90322dbbb)
 
-![image](https://github.com/user-attachments/assets/1bb62bfb-c1cc-47e2-9f13-3f6df50d27f2)
+### 🧩 Game Over & Modal Control
+- When all card pairs are matched, the game ends automatically and a “Game Over” message appears.
+- On mobile, a modal with 3 action options appears:
+  - **Restart:** Resets the game.
+  - **New Game:** Starts a new game with reshuffled cards.
+  - **Resume Game:** Closes modal and continues the current game.
 
-### 🎉 Confetti Kutlama Animasyonu
-- Tüm kartlar eşleştirilip oyun bittiğinde, ekranda **confetti yağmuru** başlar!
-- `react-confetti` kütüphanesi kullanılarak başarı animasyonu gösterilir.
-- Bu animasyon, kullanıcı “New Game” ya da “Restart” yapana kadar devam eder.
+![image](https://github.com/user-attachments/assets/bdee2d53-9638-4bd8-ba92-45af2e1e7db0)
 
-![image](https://github.com/user-attachments/assets/e8b4706c-0b4e-472f-b9ec-6a0d6c655946)
+### 🎉 Confetti Celebration Animation
+- When all cards are matched, a **confetti celebration** animates across the screen!
+- Implemented using the `react-confetti` package.
+- The animation continues until the user clicks **Restart** or **New Game**.
 
-### 🖥️ Responsive & Mobil Uyumlu Tasarım
-- Tüm ekran boyutlarına duyarlı olacak şekilde tasarlanmıştır.
-- Hem mobil hem masaüstü kullanıcılar için ideal bir oyun deneyimi sunar.
+![image](https://github.com/user-attachments/assets/5b9f703d-7450-478b-90f8-26b54f7bf48e)
 
-### 🔐 Modal Dışı Tıklamada Kapanma
-- Modal açıkken ekranın dışına tıklandığında modal pencere otomatik olarak kapanır.
-- Kullanıcı deneyimini iyileştiren bu özellik `useRef` ve `mousedown` event listener ile yönetilir.
+### 🖥️ Responsive & Mobile-Friendly Design
+- Fully responsive design to ensure a smooth experience across all devices.
+- Optimized for both mobile and desktop usage.
 
-## 💡 Geliştirme Amaçlarım
+### 🔐 Modal Dismissal on Outside Click
+- Modals automatically close when users click outside their bounds.
+- This feature improves UX and is handled using `useRef` and the `mousedown` event listener.
 
-- React'in temel yapılarını kullanarak modüler ve sürdürülebilir bir oyun oluşturmak
-- Kullanıcının başarılarını anında yansıtan görsel geri bildirimler sunmak
-- Zaman ve hamle takibi ile oyuncuya performansını değerlendirme imkânı tanımak
-- Responsive tasarım ile tüm cihazlarda erişilebilirliği sağlamak
-- Oyun deneyimini animasyon ve kutlama öğeleri ile zenginleştirmek
+## 💡 Development Goals
 
-## 🛠️ Kullanılan Teknolojiler
+- Build a modular and maintainable game using core React features  
+- Provide visual feedback to reflect user progress and success  
+- Track time and move counts to help users monitor performance  
+- Ensure full responsiveness across screen sizes and devices  
+- Celebrate user success with visual animations and interactions  
+
+## 🛠️ Technologies Used
 
 - React  
 - JavaScript (ES6+)  
 - CSS3  
 - react-confetti  
-- useRef + useEffect (modal kontrolü)  
+- useRef + useEffect (modal handling)  
 - Responsive Design (Flexbox, Media Queries)
 
-🟢 **Canlı Demo:**  
+🟢 **Live Demo:**  
 🔗 [https://memory-game-react-khaki.vercel.app](https://memory-game-react-khaki.vercel.app)
 
-## 📂 Proje Yapısı
+## 📂 Project Structure
 
 ```bash
-📁 public  
-📁 src  
- ┣ 📁 assets                # Kart ikonları ve stil dosyaları  
- ┣ 📄 App.jsx              # Tüm oyunun mantığını yöneten ana bileşen  
- ┣ 📄 index.html           # Ana HTML dosyası  
- ┣ 📄 main.jsx             # React DOM entry point  
-📄 package.json             # Bağımlılıklar ve script’ler  
-📄 README.md                # Proje açıklama dokümantasyonu  
+📁 public                   # Static assets  
+📁 src                      # Source code  
+ ┣ 📁 assets                
+ ┃ ┗ 📁 css                 # Styles (theme, reset, layout)
+ ┃   ┣ 📄 main.css         
+ ┃   ┗ 📄 reset.css        
+ ┣ 📁 components            # React components  
+ ┃ ┣ 📄 Footer.jsx          # Footer (time, moves, game status)
+ ┃ ┣ 📄 Header.jsx          # Header (title, restart/menu buttons)
+ ┃ ┣ 📄 MemoryChart.jsx     # Game area rendering cards
+ ┃ ┗ 📄 ModalPage.jsx       # Modal component (restart, new, resume)
+ ┣ 📄 App.jsx               # Main application logic  
+ ┣ 📄 main.jsx              # React DOM entry point  
+📄 .gitignore               # Git ignore rules  
+📄 README.md                # Project documentation  
+📄 eslint.config.js         # Linter configuration  
+📄 package.json             # Project dependencies and scripts  
+📄 package-lock.json        # Dependency lock file  
