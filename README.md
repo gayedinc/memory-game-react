@@ -46,7 +46,7 @@ This version is built with React to offer a more modular, performant, and user-f
 
 ![image](https://github.com/user-attachments/assets/bdee2d53-9638-4bd8-ba92-45af2e1e7db0)
 
-### 🎉 Confetti Celebration Animation
+### Confetti Celebration Animation
 - When all cards are matched, a **confetti celebration** animates across the screen!
 - Implemented using the `react-confetti` package.
 - The animation continues until the user clicks **Restart** or **New Game**.
