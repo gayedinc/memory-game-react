@@ -88,7 +88,7 @@ To run this project on your local machine, follow the steps below:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/memory-game-react.git
+git clone https://github.com/gayedinc/memory-game-react.git
 ```
 
 If Git is not installed on your system, you can download it from [https://git-scm.com](https://git-scm.com).
